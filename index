@@ -1,0 +1,6 @@
+<?php
+
+  
+	//Dernière instruction
+	include ("charte.php");
+?>
