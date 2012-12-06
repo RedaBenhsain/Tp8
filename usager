@@ -1,0 +1,42 @@
+<?php
+    include 'inc/define.inc.php';
+    include 'inc/fct.inc.php';  
+    
+  //À compléter
+	 connectionBD();
+	$titre = "SESSION USAGER EN COURS";
+	
+
+		if(isset($_GET['operation'])){
+				//la page est appeler sur une click du lien ------
+				if($_GET["operation"]== "listeusagers"){
+					$contenu = htmlFormPaiement();
+					}
+				
+				if($_GET["operation"]== "listetransactions"){
+					//a etait appeler sur le BTN PAYER/Ajouter les donner a la BD--------------
+					if(isset($_POST["txtHidID"])){
+						foreach($_POST as $cle => $valeur) {
+							if($cle != 'txtHidID' && $valeur > 0){
+								$sId = substr($cle, 3);
+								$reqSQL = 'INSERT INTO t_transactions VALUES ("",' . $_POST['txtHidID'] . ',' . $sId . ',' . $valeur . ',"' . strftime("%Y-%m-%d %H:%M:%S") . '")';
+								$resultatReqSQL = mysql_query($reqSQL);
+								}
+							}
+					}
+			    //la page est appeler sur une click du lien ------
+				$contenu = htmlListeUsagers();
+			}
+			
+		}
+		//la page est appeler pour la premiere fois-------
+		else{
+			$contenu = htmlFormPaiement();
+		}
+		
+	$menu = menuListeServices();
+	
+	 
+	//Dernière instruction
+	include ("charte.php");	
+?>
