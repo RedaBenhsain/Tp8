@@ -1,6 +1,33 @@
 <?php
 
-  
+	
+		$titre = "Bienvenue sur le site de la banque";
+		$contenu = "<p>Vous etes sur le site de la banque</p>";
+	
+			
+			
+			
+
+
+	//Si la page est rappelée avec transmission d'un message d'erreur
+	if (isset($_GET['message']))
+	{
+		$contenu = "<p>Message : " . $_GET['message'] . "</p>";	
+	}
+	
+	
+	if(!isset($_SESSION['user_in']))
+	{
+	$menu = '<form id="form_identification" method="post" action="login.php">';
+	$menu .= '<p><label for="txtLogin">login: </label><input type="text" name="txtLogin" id="txtLogin" /><br />';
+	$menu .= '<label for="txtPassword">mot de passe: </label><input type="password" name="txtPassword" id="txtPassword" /><br />';
+	$menu .= '<input type="submit" value="se connecter" name="Envoyer" /></p>';
+	$menu .= '</form>';
+	}
+	else
+		$menu .= '<div class="lien"><a href="quitter.php">Se déconnecter</a></div>';
+
+	
 	//Dernière instruction
 	include ("charte.php");
 ?>
