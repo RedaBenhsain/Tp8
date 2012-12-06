@@ -1,0 +1,24 @@
+<?php  
+  	session_start();
+    
+    // Pour supprimer complètement la session, il faut d'abord supprimer toutes les variables de session
+    $_SESSION = array();
+    
+    // Ensuite il faut effacer le cookie de session.
+    // Le if permet de vérifier si la session utilise un cookie
+    if (ini_get("session.use_cookies")) {
+            
+        //Obtention des infos sur le cookie     
+        $params = session_get_cookie_params();  
+        
+        //Suppression du cookie de session
+        
+        setcookie(session_name(), '', time() - 42000, $params["path"], $params["domain"], $params["secure"], $params["httponly"]);
+    }
+
+    // Finalement, il faut supprimer la session.
+    session_destroy();
+
+    //Redirection sur la page d'accueil
+	header("Location: index.php");
+?>
