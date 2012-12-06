@@ -1,0 +1,23 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<link rel="stylesheet" type="text/css" href="css/global.css" />
+	<title>Document sans titre</title>
+</head>
+<body>
+<?php
+		//COMPLET
+		$html = '<table cellspacing="0" cellpadding="0">
+		<tr>
+			<td class="grandTitre" align="center" colspan="2">' . $titre . '</td>
+		</tr>
+		<tr>
+		  <td id="tdOptions" class="options">' . $menu . '</td>
+		  <td id="tdContenu" class="contenu">' . $contenu . '</td>
+		</tr>
+		</table>';
+		echo($html);
+?>
+</body>
+</html>
